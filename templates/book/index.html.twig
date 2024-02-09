@@ -1,0 +1,61 @@
+
+
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Kitap Listesi{% endblock %}
+
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- ... -->
+        <section class="content">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Kitap Listesi</h3>
+                </div>
+                <!-- ... -->
+                <div class="card-body">
+                    <!-- ... -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Ad</th>
+                                <th>Yazar</th>
+                                <th>Sayfa Sayısı</th>
+                                <th>ISBN</th>
+                                <th>Kitap Sayısı</th>
+                                <th>İşlemler</th>
+                                <th></th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for book in books %}
+                                <tr>
+                                    <td>{{ book.id }}</td>
+                                    <td>{{ book.ad }}</td>
+                                    <td>{{ book.yazar }}</td>
+                                    <td>{{ book.sayfaSayisi }}</td>
+                                    <td>{{ book.ISBN }}</td>
+                                    <td>{{ book.sayi }}</td>
+                                    <td>
+                                        <a href="{{ path('book_edit', {'id': book.id}) }}" class="btn btn-warning">Düzenle</a>
+                                        <a href="{{ path('book_delete', {'id': book.id, 'token': csrf_token('delete' ~ book.id) }) }}"
+                                           class="btn btn-danger"
+                                           onclick="return confirm('Kitabı silmek istediğinizden emin misiniz?')">Sil</a>
+                                        <a href="{{ path('app_borrowedbook_new', {'id': book.id}) }}" class="btn btn-info">Ödünç Ver</a>
+                                    </td>
+                                    
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <a href="{{ path('book_new') }}">Yeni Kitap Ekle</a>
+                </div>
+            </div>
+        </section>
+        <!-- ... -->
+    </div>
+{% endblock %}

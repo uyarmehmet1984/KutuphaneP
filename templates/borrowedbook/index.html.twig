@@ -1,0 +1,48 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Ödünç Alınan Kitaplar{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>Ödünç Alınan Kitaplar</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Alış Tarihi</th>
+                    <th>İade Tarihi</th>
+                    <th>Barkod No</th>
+                    <th>Ödünç Alan</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for borrowedbook in borrowedbooks %}
+                <tr>
+                    <td>{{ borrowedbook.id }}</td>
+                    <td>{{ borrowedbook.alisTarihi ? borrowedbook.alisTarihi|date('Y-m-d') : '' }}</td>
+                    <td>{{ borrowedbook.iadeTarihi ? borrowedbook.iadeTarihi|date('Y-m-d') : '' }}</td>
+                    <td>{{ borrowedbook.BarkodNo }}</td>
+                    <td>{{ borrowedbook.User.ad }}</td>
+                
+                    <td>
+                        <a href="{{ path('app_borrowedbook_show', {'id': borrowedbook.id}) }}" class="btn btn-info btn-sm">Göster</a>
+                        <a href="{{ path('app_borrowedbook_edit', {'id': borrowedbook.id}) }}" class="btn btn-warning btn-sm">Düzenle</a>
+                        
+                    </td>
+                    <td>{% if borrowedbook.iadeTarihi is null %}
+                        <a href="{{ path('app_borrowedbook_return', {'id': borrowedbook.id}) }}" class="btn btn-success btn-sm">İade Al</a>
+                    {% endif %}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_borrowedbook_new') }}" class="btn btn-primary">Yeni Ödünç Kitap Ver</a>
+    </div>
+{% endblock %}

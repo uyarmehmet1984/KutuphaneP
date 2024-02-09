@@ -1,0 +1,15 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Ödünç Kitap Düzenle{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>Edit Borrowed Book</h1>
+
+        {{ include('borrowedbook/_form.html.twig', {'button_label': 'Güncelle'}) }}
+
+        <a href="{{ path('app_borrowedbook_index') }}" class="btn btn-secondary mt-3">Ödünç Kitaplar Listesi</a>
+
+        {{ include('borrowedbook/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

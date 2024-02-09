@@ -1,0 +1,17 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Kitap Ödünç Ver{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>Kitap Ödünç Ver</h1>
+
+        <div class="card">
+            <div class="card-body">
+                {{ include('borrowedbook/_form.html.twig') }}
+            </div>
+        </div>
+
+        <a href="{{ path('app_borrowedbook_index') }}" class="btn btn-secondary mt-3">Ödünç Kitaplar</a>
+    </div>
+{% endblock %}

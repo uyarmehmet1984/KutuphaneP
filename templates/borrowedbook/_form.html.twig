@@ -1,0 +1,20 @@
+{{ form_start(form, {'attr': {'class': 'form', 'novalidate': 'novalidate'}}) }}
+    <div class="mb-3">
+        {{ form_widget(form.alisTarihi, {'attr': {'class': 'form-control', 'placeholder': 'Borrowed Date'}}) }}
+    </div>
+    <div class="mb-3">
+        {{ form_widget(form.iadeTarihi, {'attr': {'class': 'form-control', 'placeholder': 'Return Date'}}) }}
+    </div>
+    <div class="mb-3">
+        {{ form_widget(form.BarkodNo, {'attr': {'class': 'form-control', 'placeholder': 'Barcode Number'}}) }}
+    </div>
+    <div class="mb-3">
+        {{ form_widget(form.book, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="mb-3">
+        {{ form_widget(form.user, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+

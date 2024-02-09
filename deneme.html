@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arama Sonuçları</title>
+  <style>
+    .result {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="text" id="searchInput" placeholder="Arama yap...">
+  <div id="searchResults"></div>
+
+  <script>
+    // Örnek veri (gerçek bir arama servisi kullanmalısınız)
+    const searchResultsData = [
+      { id: 1, title: 'Sonuç 1', content: 'Arama sonucu açıklama 1' },
+      { id: 2, title: 'Sonuç 2', content: 'Arama sonucu açıklama 2' },
+      { id: 3, title: 'Sonuç 3', content: 'Arama sonucu açıklama 3' },
+    ];
+
+    const searchInput = document.getElementById('searchInput');
+    const searchResultsContainer = document.getElementById('searchResults');
+
+    // Arama fonksiyonu
+    function performSearch(query) {
+      const filteredResults = searchResultsData.filter(result =>
+        result.title.toLowerCase().includes(query.toLowerCase()) ||
+        result.content.toLowerCase().includes(query.toLowerCase())
+      );
+      displayResults(filteredResults);
+    }
+
+    // Sonuçları ekrana gösterme fonksiyonu
+    function displayResults(results) {
+      searchResultsContainer.innerHTML = ''; // Önceki sonuçları temizle
+
+      results.forEach(result => {
+        const resultElement = document.createElement('div');
+        resultElement.classList.add('result');
+        resultElement.innerHTML = `<h3>${result.title}</h3><p>${result.content}</p>`;
+        resultElement.addEventListener('mouseover', () => toggleResultVisibility(resultElement));
+        resultElement.addEventListener('mouseout', () => toggleResultVisibility(resultElement));
+        searchResultsContainer.appendChild(resultElement);
+      });
+    }
+
+    // Sonuçların görünürlüğünü değiştirme fonksiyonu
+    function toggleResultVisibility(resultElement) {
+      resultElement.classList.toggle('highlight');
+    }
+
+    // Arama yapılacaksa her tuşa basıldığında tetiklenir
+    searchInput.addEventListener('input', () => performSearch(searchInput.value));
+  </script>
+
+</body>
+</html>

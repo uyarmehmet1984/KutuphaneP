@@ -1,0 +1,42 @@
+{# templates/book/edit.html.twig #}
+
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Kitap Düzenle{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>Edit Book</h1>
+
+        <form method="post">
+            <div class="mb-3">
+                {{ form_label(form.ad) }}
+                {{ form_widget(form.ad, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(form.yazar) }}
+                {{ form_widget(form.yazar, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(form.sayfaSayisi) }}
+                {{ form_widget(form.sayfaSayisi, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(form.ISBN) }}
+                {{ form_widget(form.ISBN, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(form.sayi) }}
+                {{ form_widget(form.sayi, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Güncelle</button>
+        </form>
+
+        <a href="{{ path('book_list') }}" class="btn btn-secondary mt-3">Geri</a>
+    </div>
+{% endblock %}

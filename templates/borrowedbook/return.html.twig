@@ -1,0 +1,20 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Kitap İade{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>Kitap İade</h1>
+
+        <p>Kitabı iade etmek için lütfen iade tarihini seçin:</p>
+
+        <form method="post">
+            <div class="form-group">
+                <label for="returnDate">İade Tarihi:</label>
+                <input type="date" id="returnDate" name="returnDate" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-success">Kitabı İade Et</button>
+        </form>
+    </div>
+{% endblock %}

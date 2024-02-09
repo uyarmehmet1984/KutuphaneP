@@ -1,0 +1,36 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Ödünç Kitap Detayı{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Ödünç Kitap Detayı</h1>
+
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th scope="row">ID</th>
+                    <td>{{ borrowedbook.id }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Ödünç Aldığı Tarih</th>
+                    <td>{{ borrowedbook.alisTarihi ? borrowedbook.alisTarihi|date('Y-m-d') : 'Not Available' }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">İade Tarihi</th>
+                    <td>{{ borrowedbook.iadeTarihi ? borrowedbook.iadeTarihi|date('Y-m-d') : 'Henüz İade Edilmedi' }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Barkod Numaraı</th>
+                    <td>{{ borrowedbook.BarkodNo }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_borrowedbook_index') }}" class="btn btn-secondary">Ödünç Alınan Kitaplar</a>
+
+        <a href="{{ path('app_borrowedbook_edit', {'id': borrowedbook.id}) }}" class="btn btn-primary">Düzenle</a>
+
+        {{ include('borrowedbook/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
