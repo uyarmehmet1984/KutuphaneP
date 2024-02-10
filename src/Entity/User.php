@@ -43,6 +43,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(nullable: true)]
     private ?string $telefon = null;
+     
+
+
+
 
     public function getId(): ?int
     {
@@ -104,6 +108,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+
+    private ?string $oldPassword;
+    public function getOldPassword(): ?string
+    {
+        return $this->oldPassword;
+    }
+
+    public function setOldPassword(?string $oldPassword): self
+    {
+        $this->oldPassword = $oldPassword;
+
+        return $this;
+    }
+
     private ?string $plainPassword = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Borrowedbook::class)]
@@ -213,4 +232,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+    
+
 }
