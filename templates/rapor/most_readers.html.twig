@@ -1,0 +1,24 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}
+   Raporlar
+{% endblock %}
+{% block content %}
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Kullanıcı Adı</th>
+            <th>Ödünç Aldığı Kitap Sayısı</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user[0].ad }}</td>
+                <td>{{ user.borrowedBookCount }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

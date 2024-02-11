@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Borrowedbook;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -58,6 +59,16 @@ public function getBorrowedBookCount(): int
     return $this->createQueryBuilder('bb')
         ->select('COUNT(bb.id)')
         ->getQuery()
+        ->getSingleScalarResult();
+}
+public function getUserBorrowedBooksCount(User $user): int
+{
+    return $this->createQueryBuilder('bb')
+        ->select('COUNT(bb.id)')
+        ->where('bb.user = :user')
+        ->andWhere('bb.iadeTarihi IS NOT NULL') // İade yapılmış kitaplar
+        ->getQuery()
+        ->setParameter('user', $user)
         ->getSingleScalarResult();
 }
 }

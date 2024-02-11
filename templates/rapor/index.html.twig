@@ -1,0 +1,42 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %}
+   Raporlar
+{% endblock %}
+{% block content %}
+<div class="card">
+<div class="card-header">
+<h3 class="card-title">Raporlar</h3>
+</div>
+
+<div class="row">
+                <div class="col-12 col-sm-4">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted">Toplam Kitap Sayısı</span>
+                      <span class="info-box-number text-center text-muted mb-0">{{ totalBookCount }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted">Ödünç Alınan Kitap Sayısı</span>
+                      <span class="info-box-number text-center text-muted mb-0">{{ borrowedBookCount }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted">Geciken Ödünç Sayısı</span>
+                      <span class="info-box-number text-center text-muted mb-0">{{ lateReturnsCount }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div>
+              <span><a href="{{path('most_readers')}}">Kitap okuma İstatistiği</a></span>
+              </div>
+              
+{% endblock %}

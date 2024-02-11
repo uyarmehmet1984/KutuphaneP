@@ -103,17 +103,5 @@ class BookController extends AbstractController
 
         return $this->redirectToRoute('book_list');
     }
-    #[Route('/raporlar', name: 'reports')]
-public function reports(BookRepository $bookRepository, BorrowedbookRepository $borrowedbookRepository): Response
-{
-    $totalBookCount = $bookRepository->getTotalBookCount();
-    $borrowedBookCount = $borrowedbookRepository->getBorrowedBookCount();
-    $lateReturnsCount = $borrowedbookRepository->getLateReturnsCount();
-
-    return $this->render('raporlar/index.html.twig', [
-        'totalBookCount' => $totalBookCount,
-        'borrowedBookCount' => $borrowedBookCount,
-        'lateReturnsCount' => $lateReturnsCount,
-    ]);
-}
+   
 }

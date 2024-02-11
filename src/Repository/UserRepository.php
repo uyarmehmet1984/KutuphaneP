@@ -63,4 +63,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function getUsersOrderedByBorrowedBookCount(): array
+{
+    return $this->createQueryBuilder('u')
+        ->leftJoin('u.borrowedbooks', 'bb')
+        ->addSelect('COUNT(bb.id) as borrowedBookCount')
+        ->groupBy('u.id')
+        ->orderBy('borrowedBookCount', 'DESC')
+        ->getQuery()
+        ->getResult();
+}
 }
