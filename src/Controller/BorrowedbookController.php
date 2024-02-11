@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Book; // Doğru namespace eklenmiş olmalı
 use App\Entity\Borrowedbook;
+use App\Entity\User;
 use App\Form\BorrowedbookType;
 use App\Repository\BorrowedbookRepository;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -99,5 +100,23 @@ public function returnBook(Request $request, Borrowedbook $borrowedbook, EntityM
         'borrowedbook' => $borrowedbook,
     ]);
 }
+//Kitap ödünç alan kullanıcının ödünç aldıı kitaplar
+#[Route("/borrowedbook/{id}/books", name: "borrower_books")]
+public function borrowerBooks($id,EntityManagerInterface $em): Response
+{
+    $user = $em->getRepository(User::class)->find($id);
+
+    if (!$user) {
+        throw $this->createNotFoundException('User not found');
+    }
+
+    $borrowedBooks = $em->getRepository(BorrowedBook::class)->findBy(['user' => $user]);
+
+    return $this->render('/borrowedbook/borrower_books.html.twig', [
+        'borrowedBooks' => $borrowedBooks,
+        'borrower' => $user,
+    ]);
+}
+
 
 }

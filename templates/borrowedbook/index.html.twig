@@ -24,7 +24,9 @@
                     <td>{{ borrowedbook.alisTarihi ? borrowedbook.alisTarihi|date('Y-m-d') : '' }}</td>
                     <td>{{ borrowedbook.iadeTarihi ? borrowedbook.iadeTarihi|date('Y-m-d') : '' }}</td>
                     <td>{{ borrowedbook.BarkodNo }}</td>
-                    <td>{{ borrowedbook.User.ad }}</td>
+                    <td>
+    <a href="{{ path('borrower_books', {'id': borrowedbook.User.id}) }}">{{ borrowedbook.User.ad }}</a>
+</td>
                 
                     <td>
                         <a href="{{ path('app_borrowedbook_show', {'id': borrowedbook.id}) }}" class="btn btn-info btn-sm">Göster</a>
