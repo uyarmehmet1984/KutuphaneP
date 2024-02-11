@@ -1,0 +1,26 @@
+
+
+{% block title %}User Profile{% endblock %}
+
+{% block body %}
+    <h1>User Profile</h1>
+
+    <dl>
+        <dt>Email:</dt>
+        <dd>{{ user.email }}</dd>
+
+        <dt>Ad:</dt>
+        <dd>{{ user.ad }}</dd>
+
+        <dt>Soyad:</dt>
+        <dd>{{ user.soyad }}</dd>
+
+        <dt>Address:</dt>
+        <dd>{{ user.address }}</dd>
+
+        <dt>Telefon:</dt>
+        <dd>{{ user.telefon }}</dd>
+    </dl>
+
+    <a href="{{ path('user_profile_edit') }}">Edit Profile</a>
+{% endblock %}

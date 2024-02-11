@@ -6,7 +6,8 @@
 parameters:
 
 services:
-    # default configuration for services in *this* file
+    # default configuration for services in *this* file burası eklendi şifre değişikliği için
+    use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface: '@security.password_hasher'
     
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.

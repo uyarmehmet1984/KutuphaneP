@@ -7,8 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
@@ -110,19 +112,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
 
-    private ?string $oldPassword;
-    public function getOldPassword(): ?string
-    {
-        return $this->oldPassword;
-    }
-
-    public function setOldPassword(?string $oldPassword): self
-    {
-        $this->oldPassword = $oldPassword;
-
-        return $this;
-    }
-
+   
     private ?string $plainPassword = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Borrowedbook::class)]
