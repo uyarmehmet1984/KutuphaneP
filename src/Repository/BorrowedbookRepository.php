@@ -45,4 +45,19 @@ class BorrowedbookRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function getLateReturnsCount(): int
+{
+    return $this->createQueryBuilder('bb')
+        ->select('COUNT(bb.id)')
+        ->where('bb.iadeTarihi < CURRENT_DATE()')
+        ->getQuery()
+        ->getSingleScalarResult();
+}
+public function getBorrowedBookCount(): int
+{
+    return $this->createQueryBuilder('bb')
+        ->select('COUNT(bb.id)')
+        ->getQuery()
+        ->getSingleScalarResult();
+}
 }

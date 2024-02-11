@@ -5,6 +5,8 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Form\BookType;
+use App\Repository\BookRepository;
+use App\Repository\BorrowedbookRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -101,4 +103,17 @@ class BookController extends AbstractController
 
         return $this->redirectToRoute('book_list');
     }
+    #[Route('/raporlar', name: 'reports')]
+public function reports(BookRepository $bookRepository, BorrowedbookRepository $borrowedbookRepository): Response
+{
+    $totalBookCount = $bookRepository->getTotalBookCount();
+    $borrowedBookCount = $borrowedbookRepository->getBorrowedBookCount();
+    $lateReturnsCount = $borrowedbookRepository->getLateReturnsCount();
+
+    return $this->render('raporlar/index.html.twig', [
+        'totalBookCount' => $totalBookCount,
+        'borrowedBookCount' => $borrowedBookCount,
+        'lateReturnsCount' => $lateReturnsCount,
+    ]);
+}
 }

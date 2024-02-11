@@ -101,7 +101,7 @@ public function returnBook(Request $request, Borrowedbook $borrowedbook, EntityM
     ]);
 }
 //Kitap ödünç alan kullanıcının ödünç aldıı kitaplar
-#[Route("/borrowedbook/{id}/books", name: "borrower_books")]
+#[Route("/{id}/books", name: "borrower_books")]
 public function borrowerBooks($id,EntityManagerInterface $em): Response
 {
     $user = $em->getRepository(User::class)->find($id);

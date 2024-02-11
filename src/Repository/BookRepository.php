@@ -45,4 +45,12 @@ class BookRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+public function getTotalBookCount(): int
+{
+    return $this->createQueryBuilder('b')
+        ->select('COUNT(b.id)')
+        ->getQuery()
+        ->getSingleScalarResult();
+}
 }
