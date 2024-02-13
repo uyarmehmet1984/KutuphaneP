@@ -97,3 +97,13 @@ fec048,127.0.0.1,GET,http://127.0.0.1:8000/dist/img/user3-128x128.jpg,1707755636
 f1eb0b,127.0.0.1,GET,http://127.0.0.1:8000/BorrowedbookControllerTest.php,1707756034,,404,request
 44015a,127.0.0.1,GET,http://127.0.0.1:8000/deneme.html,1707756133,b05e34,404,request
 b05e34,127.0.0.1,GET,http://127.0.0.1:8000/deneme.html,1707756133,,404,request
+e3942a,127.0.0.1,GET,http://127.0.0.1:8000/,1707761430,,404,request
+583284,127.0.0.1,GET,http://127.0.0.1:8000/book,1707761480,,200,request
+05e3a5,127.0.0.1,GET,http://127.0.0.1:8000/dist/img/user1-128x128.jpg,1707761482,498c45,404,request
+498c45,127.0.0.1,GET,http://127.0.0.1:8000/dist/img/user1-128x128.jpg,1707761482,,404,request
+e2a5be,127.0.0.1,GET,http://127.0.0.1:8000/dist/img/user8-128x128.jpg,1707761484,52e705,404,request
+52e705,127.0.0.1,GET,http://127.0.0.1:8000/dist/img/user8-128x128.jpg,1707761484,,404,request
+6be09d,127.0.0.1,GET,http://127.0.0.1:8000/dist/img/user3-128x128.jpg,1707761485,ec5a48,404,request
+ec5a48,127.0.0.1,GET,http://127.0.0.1:8000/dist/img/user3-128x128.jpg,1707761485,,404,request
+a9e748,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1707761487,97ef77,404,request
+97ef77,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1707761487,,404,request
